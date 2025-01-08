@@ -62,3 +62,4 @@ document.querySelectorAll('.buy-button').forEach(button => {
         }, 200);
     });
 });
+
