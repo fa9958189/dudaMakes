@@ -61,6 +61,14 @@ body {
     }
 }
 
+.product-image {
+    width: 100%; /* A imagem ocupará toda a largura disponível no cartão */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px; /* Bordas arredondadas */
+    margin-bottom: 10px; /* Espaço entre a imagem e o título */
+    object-fit: cover; /* Garante que a imagem se encaixe bem no espaço */
+}
+
 .content {
     max-width: 1200px;
     margin: 0 auto;
@@ -141,4 +149,22 @@ body {
         transform: translate(var(--moveX), -100vh) scale(0);
         opacity: 0;
     }
+}
+
+.cart-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.cart-button:hover {
+    background-color: #ff1493;
 }

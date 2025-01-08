@@ -63,3 +63,35 @@ document.querySelectorAll('.buy-button').forEach(button => {
     });
 });
 
+let cart = []; // Array para armazenar os produtos selecionados
+
+// Adicione os produtos ao carrinho quando o botão "Comprar" for clicado
+document.querySelectorAll('.buy-button').forEach((button, index) => {
+    button.addEventListener('click', function () {
+        const productCard = button.parentElement;
+        const productName = productCard.querySelector('h3').innerText;
+        const productPrice = parseFloat(productCard.querySelector('.price').innerText.replace('R$', '').replace(',', '.'));
+
+        cart.push({ name: productName, price: productPrice });
+        alert(`${productName} adicionado ao carrinho!`);
+    });
+});
+
+// Exibe o conteúdo do carrinho quando o botão do carrinho for clicado
+document.getElementById('cart-button').addEventListener('click', function () {
+    if (cart.length === 0) {
+        alert('O carrinho está vazio.');
+        return;
+    }
+
+    let cartDetails = '🛒 Meus Produtos:\n\n';
+    let total = 0;
+
+    cart.forEach(item => {
+        cartDetails += `${item.name} - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+        total += item.price;
+    });
+
+    cartDetails += `\n💰 Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+    alert(cartDetails);
+});
