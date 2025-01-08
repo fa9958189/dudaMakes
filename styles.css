@@ -14,18 +14,51 @@ body {
 }
 
 .nav {
-    background-color: #000000;
+    background-color: #000000; /* Fundo preto no menu */
     padding: 15px;
     position: sticky;
     top: 0;
     z-index: 100;
+    display: flex;
+    justify-content: space-around; /* Espalha os itens horizontalmente */
+    flex-wrap: wrap; /* Permite que os itens mudem de linha em telas menores */
+}
+
+.nav ul {
+    list-style: none;
+    display: flex; /* Define os itens como flexíveis */
+    margin: 0;
+    padding: 0;
+    gap: 20px; /* Espaçamento entre os itens */
+    flex-wrap: wrap; /* Garante que os itens mudem para linha abaixo, se necessário */
+}
+
+.nav li {
+    margin: 0;
 }
 
 .nav a {
-    color: #ff69b4;
+    color: #ff69b4; /* Cor do texto */
     text-decoration: none;
-    margin: 0 20px;
     font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: #ff1493; /* Cor do texto ao passar o mouse */
+}
+
+/* Estilos para telas menores */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column; /* Muda a direção para coluna */
+        align-items: center; /* Centraliza os itens */
+    }
+
+    .nav ul {
+        flex-direction: column; /* Alinha os itens verticalmente */
+        gap: 10px; /* Ajusta o espaçamento entre itens no modo vertical */
+    }
 }
 
 .content {
