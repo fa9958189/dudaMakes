@@ -3,11 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glamour Beauty - Maquiagens & Dicas</title>
+    <title>Duda makes - Maquiagens & Dicas</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos do pop-up */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 400px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .popup h2 {
+            margin: 0 0 10px;
+        }
+
+        .popup ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .popup ul li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .popup button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            float: right;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
 </head>
 <body>
-    
     <header class="header">
         <h1>✨ Duda makes ✨</h1>
         <p>Sua beleza, nossa paixão</p>
@@ -32,48 +83,38 @@
                     <h3>Paleta de Sombras Glamour</h3>
                     <p>15 cores vibrantes e pigmentadas</p>
                     <p class="price">R$ 89,90</p>
-                    <button class="buy-button">Comprar</button>
+                    <button class="buy-button" data-name="Paleta de Sombras Glamour" data-price="89.90">Comprar</button>
                 </div>
                 <div class="product-card">
                     <img src="/fotos/Batom Matte Duração 24h.jpg" alt="Batom Matte Duração 24h" class="product-image">
                     <h3>Batom Matte Duração 24h</h3>
                     <p>Acabamento aveludado e longa duração</p>
                     <p class="price">R$ 45,90</p>
-                    <button class="buy-button">Comprar</button>
+                    <button class="buy-button" data-name="Batom Matte Duração 24h" data-price="45.90">Comprar</button>
                 </div>
                 <div class="product-card">
                     <img src="/fotos/Base Líquida HD.jpg" alt="Base Líquida HD" class="product-image">
                     <h3>Base Líquida HD</h3>
                     <p>Alta cobertura e acabamento natural</p>
                     <p class="price">R$ 79,90</p>
-                    <button class="buy-button">Comprar</button>
-                </div>
-            </div>
-        </section>
-        
-
-        <section id="dicas">
-            <h2>Dicas de Maquiagem</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>Como Fazer a Maquiagem Durar Mais</h3>
-                    <ul>
-                        <li>Use primer antes da base</li>
-                        <li>Aplique pó translúcido</li>
-                        <li>Use fixador de maquiagem</li>
-                    </ul>
-                </div>
-                <div class="product-card">
-                    <h3>Olhos Perfeitos</h3>
-                    <ul>
-                        <li>Comece sempre pela sombra</li>
-                        <li>Use fita adesiva para delinear</li>
-                        <li>Aplique máscara em zigue-zague</li>
-                    </ul>
+                    <button class="buy-button" data-name="Base Líquida HD" data-price="79.90">Comprar</button>
                 </div>
             </div>
         </section>
     </div>
+
+    <!-- Pop-up -->
+ <!-- Pop-up -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+    <h2>🛍️ Meus Produtos</h2>
+    <ul id="product-list"></ul>
+    <p><strong>Total:</strong> R$ <span id="cart-total">0.00</span></p>
+    <button id="send-whatsapp">Comprar</button>
+    <button id="close-popup">Fechar</button>
+</div>
+
+    
 
     <script src="script.js"></script>
 </body>

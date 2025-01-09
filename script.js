@@ -29,7 +29,7 @@ function createHeart(x, y) {
 }
 
 function spawnHearts(x, y) {
-    for(let i = 0; i < 30; i++) {
+    for (let i = 0; i < 30; i++) {
         setTimeout(() => {
             createHeart(
                 Math.random() * window.innerWidth,
@@ -52,46 +52,107 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-document.querySelectorAll('.buy-button').forEach(button => {
-    button.addEventListener('click', function(e) {
-        alert('Produto adicionado ao carrinho!');
-        this.style.transform = 'scale(0.95)';
-        spawnHearts(0, 0); // Agora os corações aparecem por toda a tela
-        setTimeout(() => {
-            this.style.transform = 'scale(1)';
-        }, 200);
-    });
-});
-
 let cart = []; // Array para armazenar os produtos selecionados
 
-// Adicione os produtos ao carrinho quando o botão "Comprar" for clicado
-document.querySelectorAll('.buy-button').forEach((button, index) => {
-    button.addEventListener('click', function () {
-        const productCard = button.parentElement;
-        const productName = productCard.querySelector('h3').innerText;
-        const productPrice = parseFloat(productCard.querySelector('.price').innerText.replace('R$', '').replace(',', '.'));
+document.addEventListener("DOMContentLoaded", () => {
+    const cartButton = document.getElementById("cart-button");
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("popup");
+    const closePopupButton = document.getElementById("close-popup");
+    const sendWhatsappButton = document.getElementById("send-whatsapp");
+    const productList = document.getElementById("product-list");
+    const cartTotal = document.getElementById("cart-total");
+    const buyButtons = document.querySelectorAll(".buy-button");
 
-        cart.push({ name: productName, price: productPrice });
-        alert(`${productName} adicionado ao carrinho!`);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const updateCartDisplay = () => {
+        productList.innerHTML = "";
+        let total = 0;
+
+        if (cart.length === 0) {
+            productList.innerHTML = "<li>Seu carrinho está vazio!</li>";
+        } else {
+            cart.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - R$ ${parseFloat(item.price).toFixed(2)}`;
+                
+                // Cria o botão de excluir
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Excluir";
+                deleteButton.classList.add("delete-button");
+                deleteButton.onclick = () => removeItem(index);
+                li.appendChild(deleteButton);
+                
+                productList.appendChild(li);
+                total += parseFloat(item.price);
+            });
+        }
+
+        cartTotal.textContent = total.toFixed(2);
+    };
+
+    const addToCart = (name, price) => {
+        cart.push({ name, price });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartDisplay();
+    };
+
+    const removeItem = (index) => {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartDisplay();
+    };
+
+    buyButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const name = button.dataset.name;
+            const price = button.dataset.price;
+            addToCart(name, price);
+            alert("Produto adicionado no carrinho");
+        });
     });
-});
 
-// Exibe o conteúdo do carrinho quando o botão do carrinho for clicado
-document.getElementById('cart-button').addEventListener('click', function () {
-    if (cart.length === 0) {
-        alert('O carrinho está vazio.');
-        return;
-    }
-
-    let cartDetails = '🛒 Meus Produtos:\n\n';
-    let total = 0;
-
-    cart.forEach(item => {
-        cartDetails += `${item.name} - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
-        total += item.price;
+    cartButton.addEventListener("click", () => {
+        updateCartDisplay();
+        overlay.style.display = "block";
+        popup.style.display = "block";
     });
 
-    cartDetails += `\n💰 Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-    alert(cartDetails);
+    closePopupButton.addEventListener("click", () => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+
+    overlay.addEventListener("click", () => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+
+    sendWhatsappButton.addEventListener("click", () => {
+        if (cart.length === 0) {
+            return;
+        }
+
+        let message = "🛍️ *Itens do Carrinho*:\n";
+        let total = 0;
+
+        cart.forEach((item) => {
+            message += `- ${item.name}: R$ ${parseFloat(item.price).toFixed(2)}\n`;
+            total += parseFloat(item.price);
+        });
+
+        message += `\n*Total: R$ ${total.toFixed(2)}*`;
+
+        const whatsappURL = `https://wa.me/63992393705?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, "_blank");
+
+        // Limpar o carrinho
+        cart = [];
+        localStorage.removeItem("cart");
+        updateCartDisplay();
+    });
+
+    // Atualizar a exibição inicial
+    updateCartDisplay();
 });

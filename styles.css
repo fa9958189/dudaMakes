@@ -168,3 +168,13 @@ body {
 .cart-button:hover {
     background-color: #ff1493;
 }
+
+.popup .delete-button {
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    float: right;
+}
