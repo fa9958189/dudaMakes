@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dicas de Maquiagem - Duda Makes</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dicas.css">
+</head>
+<body>
+  <div id="butterflies"></div>
+  
+  <header>
+    <div class="header-content">
+      <h1><span class="sparkle">🦋</span> Duda Makes <span class="sparkle">🦋</span></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html#categorias">Produtos</a></li>
+          <li><a href="/dicas.html">Dicas de Maquiagem</a></li>
+          <li><a href="/sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dicas-container">
+    <h2>Dicas de Maquiagem</h2>
+    
+    <div class="dicas-grid">
+      <div class="dica-card" onclick="expandTip(this)">
+        <h3>💧 Preparação da Pele</h3>
+        <div class="dica-content">
+          <p>1. Limpe bem a pele</p>
+          <p>2. Aplique tônico</p>
+          <p>3. Hidrate a pele</p>
+          <p>4. Use primer antes da base</p>
+          <div class="tip-extra">
+            Dica extra: Aplique produtos com movimentos suaves para cima, 
+            nunca puxando a pele para baixo.
+          </div>
+        </div>
+      </div>
+
+      <div class="dica-card" onclick="expandTip(this)">
+        <h3>✨ Base Perfeita</h3>
+        <div class="dica-content">
+          <p>1. Escolha o tom correto</p>
+          <p>2. Aplique do centro para fora</p>
+          <p>3. Use beauty blender úmida</p>
+          <p>4. Finalize com pó translúcido</p>
+          <div class="tip-extra">
+            Dica extra: Teste o tom da base na mandíbula para encontrar 
+            a cor perfeita para sua pele.
+          </div>
+        </div>
+      </div>
+
+      <div class="dica-card" onclick="expandTip(this)">
+        <h3>👁️ Olhos Marcantes</h3>
+        <div class="dica-content">
+          <p>1. Use primer nos olhos</p>
+          <p>2. Aplique do tom mais claro ao mais escuro</p>
+          <p>3. Esfume bem as sombras</p>
+          <p>4. Finalize com máscara de cílios</p>
+          <div class="tip-extra">
+            Dica extra: Para um delineado perfeito, use fita adesiva como guia!
+          </div>
+        </div>
+      </div>
+
+      <div class="dica-card" onclick="expandTip(this)">
+        <h3>💋 Lábios Perfeitos</h3>
+        <div class="dica-content">
+          <p>1. Esfolie os lábios</p>
+          <p>2. Hidrate bem</p>
+          <p>3. Use lápis contorno</p>
+          <p>4. Aplique o batom com pincel</p>
+          <div class="tip-extra">
+            Dica extra: Para maior durabilidade, aplique uma camada de batom, 
+            papel tissue e pó translúcido antes da camada final.
+          </div>
+        </div>
+      </div>
+
+      <div class="dica-card" onclick="expandTip(this)">
+        <h3>🎨 Contorno</h3>
+        <div class="dica-content">
+          <p>1. Marque abaixo das maçãs</p>
+          <p>2. Contorne a testa</p>
+          <p>3. Afine o nariz</p>
+          <p>4. Esfume bem</p>
+          <div class="tip-extra">
+            Dica extra: Use um tom apenas 2-3 vezes mais escuro que sua pele 
+            para um resultado natural.
+          </div>
+        </div>
+      </div>
+
+      <div class="dica-card" onclick="expandTip(this)">
+        <h3>✨ Iluminador</h3>
+        <div class="dica-content">
+          <p>1. Aplique no topo das maçãs</p>
+          <p>2. Ponta do nariz</p>
+          <p>3. Arco do cupido</p>
+          <p>4. Canto interno dos olhos</p>
+          <div class="tip-extra">
+            Dica extra: Para um glow natural, aplique iluminador líquido 
+            antes da base nas áreas estratégicas.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tutorial-section">
+      <h3>Tutorial Interativo</h3>
+      <div class="face-map">
+        <svg viewBox="0 0 300 400" class="face-svg">
+          <ellipse class="face-part" cx="150" cy="200" rx="100" ry="130" data-tip="Base: Aplique do centro para fora"/>
+          <circle class="face-part" cx="115" cy="170" r="20" data-tip="Olhos: Use primer antes da sombra"/>
+          <circle class="face-part" cx="185" cy="170" r="20" data-tip="Olhos: Esfume bem as sombras"/>
+          <path class="face-part" d="M110,250 Q150,280 190,250" data-tip="Lábios: Contorne antes do batom"/>
+          <path class="face-part" d="M100,200 Q150,230 200,200" data-tip="Contorno: Esfume em movimentos circulares"/>
+          <path class="face-part" d="M90,160 Q150,190 210,160" data-tip="Iluminador: Aplique nos pontos altos"/>
+        </svg>
+      </div>
+    </div>
+  </main>
+
+  <script src="butterflies.js"></script>
+  <script src="dicas.js"></script>
+</body>
+</html>

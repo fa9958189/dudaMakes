@@ -1,0 +1,144 @@
+.dicas-container {
+  padding: 120px 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dicas-container h2 {
+  text-align: center;
+  color: var(--pink);
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+}
+
+.dicas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.dica-card {
+  background: rgba(255, 192, 203, 0.3);
+  border: 2px solid var(--pink);
+  border-radius: 15px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dica-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--pink), var(--green), var(--pink));
+  z-index: -1;
+  border-radius: 15px;
+  animation: borderGlow 2s linear infinite;
+}
+
+.dica-card h3 {
+  color: var(--pink);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dica-content {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.dica-card.expanded .dica-content {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.dica-content p {
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.dica-content p::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--pink);
+}
+
+.tip-extra {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-style: italic;
+}
+
+.tutorial-section {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.face-map {
+  max-width: 500px;
+  margin: 2rem auto;
+  position: relative;
+}
+
+.face-svg {
+  width: 100%;
+  height: auto;
+}
+
+.face-part {
+  fill: rgba(255, 192, 203, 0.3);
+  stroke: var(--pink);
+  stroke-width: 2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.face-part:hover {
+  fill: rgba(255, 192, 203, 0.6);
+}
+
+.tooltip {
+  position: absolute;
+  background: rgba(255, 192, 203, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .dicas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dica-card {
+    margin: 1rem;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
