@@ -1,8 +1,8 @@
 :root {
   --pink: #ff69b4;
   --pastel-pink: #ffd1dc;
-  --green: #98ff98;
-  --light-green: #e6ffe6;
+  --light-pink: #ffe4e9;
+  --dark-pink: #ff1493;
 }
 
 * {
@@ -13,7 +13,7 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #ffc0cb 0%, var(--pastel-pink) 35%, var(--light-green) 65%, var(--green) 100%);
+  background: linear-gradient(135deg, #ffc0cb 0%, var(--pastel-pink) 35%, var(--light-pink) 65%, var(--pink) 100%);
   color: #444;
   overflow-x: hidden;
 }
@@ -96,7 +96,7 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(45deg, var(--pastel-pink), var(--light-green), var(--green));
+  background: linear-gradient(45deg, var(--pastel-pink), var(--light-pink), var(--pink));
   padding: 2rem;
 }
 
@@ -169,14 +169,14 @@ nav a:hover {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, var(--pink), var(--green), var(--pink));
+  background: linear-gradient(45deg, var(--pink), var(--dark-pink), var(--pink));
   z-index: -1;
   border-radius: 25px;
   animation: borderGlow 2s linear infinite;
 }
 
 .tab-btn.active {
-  background: linear-gradient(45deg, var(--pink), var(--green));
+  background: linear-gradient(45deg, var(--pink), var(--dark-pink));
   color: white;
   transform: scale(1.05);
 }
@@ -212,7 +212,7 @@ nav a:hover {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, var(--pink), var(--green), var(--pink));
+  background: linear-gradient(45deg, var(--pink), var(--dark-pink), var(--pink));
   z-index: -1;
   border-radius: 15px;
   animation: borderGlow 2s linear infinite;
@@ -235,8 +235,8 @@ nav a:hover {
 }
 
 button {
-  background: linear-gradient(45deg, var(--pink), var(--green));
-  color: #444;
+  background: linear-gradient(45deg, var(--pink), var(--dark-pink));
+  color: white;
   border: none;
   padding: 0.5rem 2rem;
   border-radius: 25px;
@@ -393,7 +393,7 @@ button:hover {
   left: 50%;
   transform: translateX(-50%);
   width: 4px;
-  background: linear-gradient(var(--pink), var(--green));
+  background: linear-gradient(var(--pink), var(--dark-pink));
 }
 
 .timeline-dot {
@@ -428,7 +428,7 @@ button:hover {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, var(--pink), var(--green), var(--pink));
+  background: linear-gradient(45deg, var(--pink), var(--dark-pink), var(--pink));
   z-index: -1;
   border-radius: 15px;
   animation: borderGlow 2s linear infinite;
