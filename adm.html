@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administração - Duda Makes</title>
+  <link rel="stylesheet" href="adm.css">
+</head>
+<body>
+  <header>
+    <h1>Administração</h1>
+    <nav>
+      <a href="index.html">Página Principal</a>
+    </nav>
+  </header>
+
+  <!-- Formulário de Login -->
+  <div id="login-form">
+    <h2>Acesso Restrito</h2>
+    <form id="auth-form">
+        <label for="admin-password">Senha:</label>
+        <input type="password" id="admin-password" required>
+        <button type="submit">Entrar</button>
+    </form>
+    <p id="error-message" style="color: red; display: none;">Senha incorreta. Tente novamente.</p>
+  </div>
+
+  <!-- Conteúdo da Administração (escondido até login) -->
+  <main id="admin-content" style="display: none;">
+    <h2>Cadastrar Produto</h2>
+    <form id="product-form">
+      <label for="product-name">Nome do Produto:</label>
+      <input type="text" id="product-name" placeholder="Nome do produto" required>
+      
+      <label for="product-price">Preço:</label>
+      <input type="number" id="product-price" step="0.01" placeholder="Preço (R$)" required>
+      
+      <label for="product-image">Foto do Produto:</label>
+      <input type="file" id="product-image" accept="image/*" capture="environment" required>
+
+      <label for="product-category">Categoria:</label>
+      <select id="product-category" required>
+        <option value="pinceis">Pincéis</option>
+        <option value="rosto">Rosto</option>
+        <option value="olhos">Olhos</option>
+        <option value="boca">Boca</option>
+        <option value="unhas">Unhas</option>
+      </select>
+      
+      <button type="submit">Cadastrar Produto</button>
+    </form>
+
+    <h2>Produtos Cadastrados</h2>
+    <table id="product-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Categoria</th>
+          <th>Imagem</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Produtos cadastrados aparecerão aqui -->
+      </tbody>
+    </table>    
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Duda Makes. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="adm.js"></script>
+</body>
+</html>

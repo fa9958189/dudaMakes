@@ -54,39 +54,21 @@ function updateCartCount() {
 }
 
 function updateCartTotal() {
-  const total = cart.reduce((sum, item) => sum + item.preco, 0);
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
   document.querySelector('.cart-total span').textContent = `R$ ${total.toFixed(2)}`;
-}
-
-function createHeart(x, y) {
-  const heart = document.createElement('div');
-  heart.className = 'heart';
-  heart.textContent = '❤️';
-  heart.style.left = x + 'px';
-  heart.style.top = y + 'px';
-  document.getElementById('hearts').appendChild(heart);
-  
-  heart.addEventListener('animationend', () => heart.remove());
-}
-
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  updateCartDisplay();
-  updateCartCount();
-  updateCartTotal();
 }
 
 function updateCartDisplay() {
   const cartItems = document.querySelector('.cart-items');
-  cartItems.innerHTML = '';
-  
+  cartItems.innerHTML = ''; // Limpa a lista de itens no carrinho
+
   cart.forEach((item, index) => {
     const itemElement = document.createElement('div');
     itemElement.className = 'cart-item';
     itemElement.innerHTML = `
-      <span>${item.nome}</span>
+      <span>${item.name}</span>
       <div class="cart-item-right">
-        <span>R$ ${item.preco.toFixed(2)}</span>
+        <span>R$ ${item.price.toFixed(2)}</span>
         <button class="remove-item" onclick="removeFromCart(${index})">✕</button>
       </div>
     `;
@@ -96,32 +78,38 @@ function updateCartDisplay() {
 
 function addToCart(button) {
   const produto = button.closest('.produto');
-  const nome = produto.dataset.nome;
-  const preco = parseFloat(produto.dataset.preco);
-  
-  cart.push({ nome, preco });
+  const name = produto.querySelector('h3').textContent.trim();
+  const price = parseFloat(produto.querySelector('p').textContent.replace('R$', '').trim());
+
+  cart.push({ name, price });
   updateCartCount();
   updateCartDisplay();
   updateCartTotal();
-  
-  // Create hearts animation
+
+  // Animação de corações ao adicionar ao carrinho
   const rect = button.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
-  
-  // Create more hearts (20 instead of 12)
+
   for (let i = 0; i < 20; i++) {
     setTimeout(() => {
-      const randomOffset = (Math.random() - 0.5) * 60; // Increased spread
+      const randomOffset = (Math.random() - 0.5) * 60;
       createHeart(
         centerX + randomOffset,
         centerY
       );
-    }, i * 50); // Reduced delay between hearts
+    }, i * 50);
   }
 }
 
-// Initialize cart sidebar close when clicking outside
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCartCount();
+  updateCartDisplay();
+  updateCartTotal();
+}
+
+// Inicializa carrinho ao clicar fora
 document.addEventListener('click', (e) => {
   const cartSidebar = document.querySelector('.cart-sidebar');
   const cartIcon = document.querySelector('.cart-icon');
@@ -133,13 +121,85 @@ document.addEventListener('click', (e) => {
 // Adicionar funcionalidade das tabs de categoria
 document.querySelectorAll('.tab-btn').forEach(button => {
   button.addEventListener('click', () => {
-    // Remove active class from all buttons and contents
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.categoria-content').forEach(content => content.classList.remove('active'));
     
-    // Add active class to clicked button and corresponding content
     button.classList.add('active');
     const categoria = button.dataset.categoria;
     document.getElementById(categoria).classList.add('active');
   });
 });
+
+// Carregar produtos dinamicamente a partir do backend
+async function loadProducts() {
+    try {
+        const response = await fetch('http://localhost:3000/api/produtos');
+        const produtos = await response.json();
+
+        produtos.forEach(produto => {
+            const categorySection = document.getElementById(produto.categoria);
+            if (categorySection) {
+                const gridProdutos = categorySection.querySelector('.grid-produtos');
+
+                const productElement = document.createElement('div');
+                productElement.classList.add('produto');
+                productElement.innerHTML = `
+                    <div class="produto-img">
+                        <img src="${produto.imagem}" alt="${produto.nome}">
+                    </div>
+                    <h3>${produto.nome}</h3>
+                    <p>R$ ${produto.preco.toFixed(2)}</p>
+                    <button onclick="addToCart(this)">Comprar</button>
+                `;
+                gridProdutos.appendChild(productElement);
+            }
+        });
+
+    } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+    }
+}
+
+// Inicializa o carregamento dos produtos ao abrir a página
+document.addEventListener('DOMContentLoaded', loadProducts);
+
+// Função para criar animação de corações
+function createHeart(x, y) {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.textContent = '❤️';
+  heart.style.left = x + 'px';
+  heart.style.top = y + 'px';
+  document.getElementById('hearts').appendChild(heart);
+
+  heart.addEventListener('animationend', () => heart.remove());
+}
+
+// Função para enviar as informações do carrinho para o WhatsApp
+function finalizarCompra() {
+  if (cart.length === 0) {
+    alert("O carrinho está vazio. Adicione produtos antes de finalizar a compra.");
+    return;
+  }
+
+  const numeroWhatsApp = "63992649114";
+  let mensagem = "Olá, gostaria de finalizar minha compra com os seguintes itens:\n\n";
+
+  // Adicionar produtos à mensagem
+  cart.forEach((item, index) => {
+    mensagem += `${index + 1}. ${item.name} - R$ ${item.price.toFixed(2)}\n`;
+  });
+
+  // Adicionar o total à mensagem
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
+
+  // Codificar a mensagem para URL
+  const mensagemCodificada = encodeURIComponent(mensagem);
+
+  // Redirecionar para o WhatsApp
+  window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`, "_blank");
+}
+
+// Adiciona o evento de clique ao botão "Finalizar Compra"
+document.querySelector('.finalizar-compra').addEventListener('click', finalizarCompra);
