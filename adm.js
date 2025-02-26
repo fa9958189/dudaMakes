@@ -21,7 +21,7 @@ document.getElementById('auth-form').addEventListener('submit', async function (
             console.log("Login bem-sucedido!");
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('admin-content').style.display = 'block';
-            displayProducts(); // Carrega os produtos assim que o admin faz login
+            displayProducts(); // Carrega os produtos ao fazer login
         } else {
             console.error("Erro no login:", result.error);
             document.getElementById('error-message').textContent = result.error;
@@ -35,9 +35,9 @@ document.getElementById('auth-form').addEventListener('submit', async function (
     }
 });
 
-// Evento para cadastrar produtos
+// Evento para cadastrar produtos no Firestore
 document.getElementById('product-form').addEventListener('submit', async function (e) {
-    e.preventDefault(); // Impede o comportamento padrão do formulário
+    e.preventDefault();
 
     const nome = document.getElementById('product-name').value.trim();
     const preco = parseFloat(document.getElementById('product-price').value).toFixed(2);
@@ -49,7 +49,7 @@ document.getElementById('product-form').addEventListener('submit', async functio
         return;
     }
 
-    // Converte a imagem para Base64
+    // Converte a imagem para Base64 antes de enviar ao backend
     if (imagemInput.files.length > 0) {
         const reader = new FileReader();
         reader.onload = async function (event) {
@@ -84,7 +84,7 @@ document.getElementById('product-form').addEventListener('submit', async functio
     }
 });
 
-// ✅ FUNÇÃO PARA LISTAR PRODUTOS ✅
+// ✅ FUNÇÃO PARA LISTAR PRODUTOS NO FIRESTORE ✅
 async function displayProducts() {
     try {
         console.log("Carregando produtos...");
@@ -97,12 +97,13 @@ async function displayProducts() {
         produtos.forEach((produto) => {
             const row = document.createElement('tr');
             row.innerHTML = `
+                <td>${produto.id}</td>
                 <td>${produto.nome}</td>
                 <td>R$ ${produto.preco}</td>
                 <td>${produto.categoria}</td>
                 <td><img src="${produto.imagem}" alt="${produto.nome}" width="50"></td>
                 <td>
-                    <button onclick="deleteProduct(${produto.id})">Excluir</button>
+                    <button onclick="deleteProduct('${produto.id}')">Excluir</button>
                 </td>
             `;
             tableBody.appendChild(row);
@@ -113,7 +114,7 @@ async function displayProducts() {
     }
 }
 
-// Função para excluir produtos do banco de dados
+// ✅ FUNÇÃO PARA EXCLUIR PRODUTOS DO FIRESTORE ✅
 async function deleteProduct(id) {
     try {
         console.log(`Tentando excluir produto com ID: ${id}`);
@@ -122,24 +123,21 @@ async function deleteProduct(id) {
             method: 'DELETE',
         });
 
-        const result = await response.json();
-        console.log(result);
-
-        if (response.ok) {
-            alert('Produto excluído com sucesso!');
-            displayProducts(); // Atualiza a tabela
-        } else {
-            alert(`Erro ao excluir produto: ${result.error}`);
+        if (!response.ok) {
+            const result = await response.json();
             console.error(`Erro ao excluir produto ID ${id}:`, result.error);
+            alert(`Erro ao excluir produto: ${result.error}`);
+            return;
         }
+
+        alert('Produto excluído com sucesso!');
+        displayProducts(); // Atualiza a tabela
+
     } catch (error) {
         console.error('Erro ao excluir produto:', error);
         alert("Erro ao excluir o produto. Verifique o console para mais detalhes.");
     }
 }
 
-
-// Chamar a função ao carregar a página de administração
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('admin-content').style.display = 'none';
-});
+// Atualizar a tabela ao carregar a página
+document.addEventListener('DOMContentLoaded', displayProducts);
