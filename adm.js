@@ -84,7 +84,7 @@ document.getElementById('product-form').addEventListener('submit', async functio
     }
 });
 
-// ✅ FUNÇÃO PARA LISTAR PRODUTOS NO FIRESTORE ✅
+// ✅ FUNÇÃO PARA LISTAR PRODUTOS ✅
 async function displayProducts() {
     try {
         console.log("Carregando produtos...");
@@ -92,7 +92,7 @@ async function displayProducts() {
         const produtos = await response.json();
 
         const tableBody = document.querySelector('#product-table tbody');
-        tableBody.innerHTML = ''; // Limpa a tabela antes de renderizar os produtos
+        tableBody.innerHTML = '';
 
         produtos.forEach((produto) => {
             const row = document.createElement('tr');
@@ -103,7 +103,7 @@ async function displayProducts() {
                 <td>${produto.categoria}</td>
                 <td><img src="${produto.imagem}" alt="${produto.nome}" width="50"></td>
                 <td>
-                    <button onclick="deleteProduct('${produto.id}')">Excluir</button>
+                    <button onclick="deleteProduct(${produto.id})">Excluir</button>
                 </td>
             `;
             tableBody.appendChild(row);
@@ -114,7 +114,7 @@ async function displayProducts() {
     }
 }
 
-// ✅ FUNÇÃO PARA EXCLUIR PRODUTOS DO FIRESTORE ✅
+// ✅ FUNÇÃO PARA EXCLUIR PRODUTOS ✅
 async function deleteProduct(id) {
     try {
         console.log(`Tentando excluir produto com ID: ${id}`);
@@ -131,7 +131,7 @@ async function deleteProduct(id) {
         }
 
         alert('Produto excluído com sucesso!');
-        displayProducts(); // Atualiza a tabela
+        displayProducts();
 
     } catch (error) {
         console.error('Erro ao excluir produto:', error);
