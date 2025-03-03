@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +17,6 @@
           <li><a href="#categorias">Produtos</a></li>
           <li><a href="dicas.html">Dicas de Maquiagem</a></li>
           <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="adm.html">Administração</a></li>
         </ul>
       </nav>
     </div>
@@ -36,7 +34,6 @@
     </div>
     <button class="finalizar-compra">Finalizar Compra</button>
   </div>
-  
 
   <main>
     <section class="hero">
@@ -55,30 +52,275 @@
         <button class="tab-btn" data-categoria="unhas">Unhas</button>
       </div>
 
-      <section id="pinceis" class="categoria-content active">
-        <div class="grid-produtos"></div>
-      </section>
-      
-      <section id="rosto" class="categoria-content">
-        <div class="grid-produtos"></div>
-      </section>
-      
-      <section id="olhos" class="categoria-content">
-        <div class="grid-produtos"></div>
-      </section>
-      
-      <section id="boca" class="categoria-content">
-        <div class="grid-produtos"></div>
-      </section>
-      
-      <section id="unhas" class="categoria-content">
-        <div class="grid-produtos"></div>
-      </section>
-      
+      <div class="categoria-content active" id="pinceis">
+        <div class="grid-produtos">
+          <div class="produto" data-nome="Kit Pincéis Profissionais" data-preco="149.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Kit Pincéis Profissionais</h3>
+            <p>R$ 149,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Pincel para Base" data-preco="49.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Pincel para Base</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Pincel para Blush" data-preco="39.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Pincel para Blush</h3>
+            <p>R$ 39,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Pincel para Sombra" data-preco="29.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Pincel para Sombra</h3>
+            <p>R$ 29,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Pincel para Contorno" data-preco="44.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Pincel para Contorno</h3>
+            <p>R$ 44,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Pincel para Iluminador" data-preco="34.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Pincel para Iluminador</h3>
+            <p>R$ 34,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria-content" id="rosto">
+        <div class="grid-produtos">
+          <div class="produto" data-nome="Base Líquida Matte" data-preco="89.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Base Líquida Matte</h3>
+            <p>R$ 89,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Pó Compacto" data-preco="59.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Pó Compacto</h3>
+            <p>R$ 59,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Blush Rose" data-preco="49.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Blush Rose</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Contorno em Pó" data-preco="69.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Contorno em Pó</h3>
+            <p>R$ 69,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Iluminador Facial" data-preco="79.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Iluminador Facial</h3>
+            <p>R$ 79,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Primer Facial" data-preco="64.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Primer Facial</h3>
+            <p>R$ 64,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria-content" id="olhos">
+        <div class="grid-produtos">
+          <div class="produto" data-nome="Paleta de Sombras" data-preco="129.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Paleta de Sombras</h3>
+            <p>R$ 129,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Máscara para Cílios" data-preco="49.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Máscara para Cílios</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Delineador Líquido" data-preco="39.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Delineador Líquido</h3>
+            <p>R$ 39,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Lápis para Olhos" data-preco="29.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Lápis para Olhos</h3>
+            <p>R$ 29,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Primer para Olhos" data-preco="44.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Primer para Olhos</h3>
+            <p>R$ 44,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Pigmento Glitter" data-preco="34.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Pigmento Glitter</h3>
+            <p>R$ 34,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria-content" id="boca">
+        <div class="grid-produtos">
+          <div class="produto" data-nome="Batom Matte" data-preco="39.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Batom Matte</h3>
+            <p>R$ 39,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Gloss Labial" data-preco="29.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Gloss Labial</h3>
+            <p>R$ 29,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Batom Líquido" data-preco="44.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Batom Líquido</h3>
+            <p>R$ 44,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Lápis Labial" data-preco="24.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Lápis Labial</h3>
+            <p>R$ 24,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Lip Tint" data-preco="34.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Lip Tint</h3>
+            <p>R$ 34,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Hidratante Labial" data-preco="19.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Hidratante Labial</h3>
+            <p>R$ 19,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria-content" id="unhas">
+        <div class="grid-produtos">
+          <div class="produto" data-nome="Esmalte Gel" data-preco="24.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Esmalte Gel</h3>
+            <p>R$ 24,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Kit Unhas" data-preco="79.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Kit Unhas</h3>
+            <p>R$ 79,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Base Fortalecedora" data-preco="29.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Base Fortalecedora</h3>
+            <p>R$ 29,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Top Coat Brilhante" data-preco="19.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Top Coat Brilhante</h3>
+            <p>R$ 19,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Removedor de Esmalte" data-preco="14.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Removedor de Esmalte</h3>
+            <p>R$ 14,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Kit Nail Art" data-preco="49.90">
+            <div class="produto-img">
+              <img src="/img/Base Líquida HD.jpg" alt="Top Coat Brilhante" />
+            </div>
+            <h3>Kit Nail Art</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Duda Makes. Todos os direitos reservados.</p>
+    <p>&copy; 2024 Duda Makes. Todos os direitos reservados.</p>
   </footer>
 
   <script src="butterflies.js"></script>

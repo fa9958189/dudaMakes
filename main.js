@@ -43,7 +43,14 @@ window.addEventListener('scroll', () => {
 });
 
 // Shopping Cart functionality
-let cart = [];
+
+// Inicializa o carrinho a partir do localStorage ou cria um array vazio
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Função para salvar o carrinho no localStorage
+function saveCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 function toggleCart() {
   document.querySelector('.cart-sidebar').classList.toggle('open');
@@ -82,6 +89,7 @@ function addToCart(button) {
   const price = parseFloat(produto.querySelector('p').textContent.replace('R$', '').trim());
 
   cart.push({ name, price });
+  saveCart(); // Salva o carrinho no localStorage
   updateCartCount();
   updateCartDisplay();
   updateCartTotal();
@@ -94,22 +102,20 @@ function addToCart(button) {
   for (let i = 0; i < 20; i++) {
     setTimeout(() => {
       const randomOffset = (Math.random() - 0.5) * 60;
-      createHeart(
-        centerX + randomOffset,
-        centerY
-      );
+      createHeart(centerX + randomOffset, centerY);
     }, i * 50);
   }
 }
 
 function removeFromCart(index) {
   cart.splice(index, 1);
+  saveCart(); // Atualiza o localStorage após remover o item
   updateCartCount();
   updateCartDisplay();
   updateCartTotal();
 }
 
-// Inicializa carrinho ao clicar fora
+// Fecha o carrinho se clicar fora dele
 document.addEventListener('click', (e) => {
   const cartSidebar = document.querySelector('.cart-sidebar');
   const cartIcon = document.querySelector('.cart-icon');
@@ -118,7 +124,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Adicionar funcionalidade das tabs de categoria
+// Funcionalidade das tabs de categoria
 document.querySelectorAll('.tab-btn').forEach(button => {
   button.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -132,36 +138,40 @@ document.querySelectorAll('.tab-btn').forEach(button => {
 
 // Carregar produtos dinamicamente a partir do backend
 async function loadProducts() {
-    try {
-        const response = await fetch('http://localhost:3000/api/produtos');
-        const produtos = await response.json();
+  try {
+    const response = await fetch('http://localhost:3000/api/produtos');
+    const produtos = await response.json();
 
-        produtos.forEach(produto => {
-            const categorySection = document.getElementById(produto.categoria);
-            if (categorySection) {
-                const gridProdutos = categorySection.querySelector('.grid-produtos');
+    produtos.forEach(produto => {
+      const categorySection = document.getElementById(produto.categoria);
+      if (categorySection) {
+        const gridProdutos = categorySection.querySelector('.grid-produtos');
 
-                const productElement = document.createElement('div');
-                productElement.classList.add('produto');
-                productElement.innerHTML = `
-                    <div class="produto-img">
-                        <img src="${produto.imagem}" alt="${produto.nome}">
-                    </div>
-                    <h3>${produto.nome}</h3>
-                    <p>R$ ${produto.preco.toFixed(2)}</p>
-                    <button onclick="addToCart(this)">Comprar</button>
-                `;
-                gridProdutos.appendChild(productElement);
-            }
-        });
-
-    } catch (error) {
-        console.error('Erro ao carregar produtos:', error);
-    }
+        const productElement = document.createElement('div');
+        productElement.classList.add('produto');
+        productElement.innerHTML = `
+          <div class="produto-img">
+            <img src="${produto.imagem}" alt="${produto.nome}">
+          </div>
+          <h3>${produto.nome}</h3>
+          <p>R$ ${produto.preco.toFixed(2)}</p>
+          <button onclick="addToCart(this)">Comprar</button>
+        `;
+        gridProdutos.appendChild(productElement);
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao carregar produtos:', error);
+  }
 }
 
-// Inicializa o carregamento dos produtos ao abrir a página
-document.addEventListener('DOMContentLoaded', loadProducts);
+// Ao carregar a página, atualiza o carrinho com os itens do localStorage e carrega os produtos
+document.addEventListener('DOMContentLoaded', () => {
+  updateCartCount();
+  updateCartDisplay();
+  updateCartTotal();
+  loadProducts();
+});
 
 // Função para criar animação de corações
 function createHeart(x, y) {
@@ -201,5 +211,5 @@ function finalizarCompra() {
   window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`, "_blank");
 }
 
-// Adiciona o evento de clique ao botão "Finalizar Compra"
+// Evento para finalizar a compra
 document.querySelector('.finalizar-compra').addEventListener('click', finalizarCompra);
