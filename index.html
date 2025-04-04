@@ -57,16 +57,52 @@
         <button class="tab-btn active" data-categoria="rosto">Rosto</button>
         <button class="tab-btn" data-categoria="olhos">Olhos</button>
         <button class="tab-btn" data-categoria="boca">Boca</button>
+        <button class="tab-btn" data-categoria="acessorios">Acessorios</button>
       </div>
 
+
+
+      <!-- Categoria Pincéis (exemplo de seção indisponível) -->
       <div class="categoria-content active" id="pinceis">
         <div class="grid-produtos">
-          <div class="produto" data-nome="Esponja Gota para Maquiagem Roxinha Mahav ESPMH" data-preco="10.00">
+          <div class="produto" data-nome="Kit de Pincel Rosa com 7 Pincéis Ruby Anjo" data-preco="45,00">
             <div class="produto-img">
-              <img src="/img/Esponja Gota para Maquiagem Roxinha Mahav ESPMH.webp" alt="Esponja Gota para Maquiagem Roxinha Mahav ESPMH" />
+              <img src="/img/Kit de Pincel Rosa com 7 Pincéis Ruby Anjo $45,00 reais.jpeg" alt="Kit de Pincel Rosa com 7 Pincéis Ruby Anjo" />
             </div>
-            <h3>Esponja Gota para Maquiagem Roxinha Mahav ESPMH</h3>
+            <h3>Kit de Pincel Rosa com 7 Pincéis Ruby Anjo</h3>
+            <p>R$ 45,00</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Kit de Pincel brilhantes com 5 Pincéis" data-preco="12,00">
+            <div class="produto-img">
+              <img src="/img/Kit de Pincel brilhantes com 5 Pincéis.jpeg" alt="Kit de Pincel brilhantes com 5 Pincéis" />
+            </div>
+            <h3>Kit de Pincel brilhantes com 5 Pincéis</h3>
+            <p>R$ 12,00</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Esponja para Maquiagem Roxinha Mahav" data-preco="10,00">
+            <div class="produto-img">
+              <img src="/img/Esponja para Maquiagem Roxinha Mahav.jpeg" alt="Esponja para Maquiagem Roxinha Mahav" />
+            </div>
+            <h3>Esponja para Maquiagem Roxinha Mahav</h3>
             <p>R$ 10,00</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Pacote Esponja para Pó Profissional com 4 Unidades" data-preco="10,00">
+            <div class="produto-img">
+              <img src="/img/Pacote Esponja para Pó Profissional com 4 Unidades.jpeg" alt="Pacote Esponja para Pó Profissional com 4 Unidades" />
+            </div>
+            <h3>Pacote Esponja para Pó Profissional com 4 Unidades</h3>
+            <p>R$ 10,00</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Kit Esponja Maquiagem com 7 unidades" data-preco="15,00">
+            <div class="produto-img">
+              <img src="/img/Kit Esponja Maquiagem com 7 unidades.jpeg" alt="Kit Esponja Maquiagem com 7 unidades" />
+            </div>
+            <h3>Kit Esponja Maquiagem com 7 unidades</h3>
+            <p>R$ 15,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>
         </div>
@@ -75,36 +111,36 @@
       <!-- Categoria Rosto -->
       <div class="categoria-content" id="rosto">
         <div class="grid-produtos">
-          <div class="produto" data-nome="Gel Antioleosidade Antiacne Calmante Adstringente Ácido Salicílico Dermachem 100g" data-preco="15.00">
+          <div class="produto" data-nome="Gel Antioleosidade Antiacne Calmante Adstringente Ácido Salicílico Dermachem 100g" data-preco="14.00">
             <div class="produto-img">
               <img src="/img/Gel Antioleosidade Antiacne Calmante Adstringente Ácido Salicílico Dermachem 100g.jpg" alt="Gel Antioleosidade Antiacne Calmante Adstringente Ácido Salicílico Dermachem 100g" />
             </div>
             <h3>Gel Antioleosidade Antiacne Calmante Adstringente Ácido Salicílico Dermachem 100g</h3>
-            <p>R$ 15,00</p>
+            <p>R$ 14,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>
-          <div class="produto" data-nome="Pó Compacto Pure Porcelain Ruby Rose" data-preco="20.00">
+          <div class="produto" data-nome="Pó Compacto Pure Porcelain Ruby Rose" data-preco="18.00">
             <div class="produto-img">
               <img src="/img/Pó Compacto Pure Porcelain Ruby Rose.webp" alt="Pó Compacto Pure Porcelain Ruby Rose" />
             </div>
             <h3>Pó Compacto</h3>
-            <p>R$ 20,00</p>
+            <p>R$ 18,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>        
-          <div class="produto" data-nome="Creme Hidratante Facial de Rosa Mosqueta Wike Make by Miss Rôse 120ml" data-preco="18.00">
+          <div class="produto" data-nome="Creme Hidratante Facial de Rosa Mosqueta Wike Make by Miss Rôse 120ml" data-preco="15.00">
             <div class="produto-img">
               <img src="/img/Creme Hidratante Facial de Rosa Mosqueta Wike Make by Miss Rôse 120ml.webp" alt="Creme Hidratante Facial de Rosa Mosqueta Wike Make by Miss Rôse 120ml" />
             </div>
             <h3>Creme Hidratante Facial de Rosa Mosqueta Wike Make by Miss Rôse 120ml</h3>
-            <p>R$ 18,00</p>
+            <p>R$ 15,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>        
-          <div class="produto" data-nome="iluminador facial Compacto Highlighter Wike Make" data-preco="14.00">
+          <div class="produto" data-nome="iluminador facial Compacto Highlighter Wike Make" data-preco="10.00">
             <div class="produto-img">
               <img src="/img/iluminador facial Compacto Highlighter Wike Make.jpg" alt="Creme Hidratante Facial de Rosa Mosqueta Wike Make by Miss Rôse 120ml" />
             </div>
             <h3>iluminador facial Compacto Highlighter Wike Make</h3>
-            <p>R$ 14,00</p>
+            <p>R$ 10,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>        
           <div class="produto" data-nome="Sabonete Demaquilante Pos Maquiagem make out" data-preco="15.00">
@@ -123,12 +159,12 @@
             <p>R$ 20,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>        
-          <div class="produto" data-nome="Pó solto translucido celebration playboy" data-preco="18.99">
+          <div class="produto" data-nome="Pó solto translucido celebration playboy" data-preco="25.00">
             <div class="produto-img">
-              <img src="/img/Pó solto translucido celebration playboy.png" alt="Pó solto translucido celebration playboy" />
+              <img src="/img/Pó solto translucido celebration playboy.jpg" alt="Pó solto translucido celebration playboy" />
             </div>
             <h3>Pó solto translucido celebration playboy</h3>
-            <p>R$ 18,99</p>
+            <p>R$ 25,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>        
           <div class="produto" data-nome="Pó solto ultrafino pink power - dapop" data-preco="12.00">
@@ -139,36 +175,60 @@
             <p>R$ 12,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>        
-          <div class="produto" data-nome="Paleta de Blush With Love My Life - MY8288" data-preco="35.00">
+          <div class="produto" data-nome="MOUSSE MICELAR ROSA MOSQUETA 150ML SOUL" data-preco="20,00">
             <div class="produto-img">
-              <img src="/img/Paleta de Blush With Love My Life - MY8288.jpg" alt="Paleta de Blush With Love My Life - MY8288" />
+              <img src="/img/MOUSSE MICELAR ROSA MOSQUETA 150ML SOUL.jpeg" alt="MOUSSE MICELAR ROSA MOSQUETA 150ML SOUL" />
             </div>
-            <h3>Paleta de Blush With Love My Life - MY8288</h3>
-            <p>R$ 35,00</p>
+            <h3>MOUSSE MICELAR ROSA MOSQUETA 150ML SOUL</h3>
+            <p>R$ 20,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>        
-          <div class="produto" data-nome="Paleta de Iluminador With Love Mylife MY8289" data-preco="40.00">
+          <div class="produto" data-nome="Paleta de Contorno Matte Vivai Ref 1058" data-preco="25,00">
             <div class="produto-img">
-              <img src="/img/Paleta de Iluminador With Love Mylife.jpg" alt="Paleta de Iluminador With Love Mylife MY8289" />
+              <img src="/img/Paleta de Contorno Matte Vivai Ref 1058.jpeg" alt="Paleta de Contorno Matte Vivai Ref 1058" />
             </div>
-            <h3>Paleta de Iluminador With Love Mylife MY8289</h3>
-            <p>R$ 40,00</p>
-            <button onclick="addToCart(this)">Comprar</button>
-          </div>        
-          <div class="produto" data-nome="Paleta de Sombras Luisance Power Eyeshadows - L2061" data-preco="25.00">
-            <div class="produto-img">
-              <img src="/img/Paleta de Sombras Luisance Power Eyeshadows - L2061.webp" alt="Paleta de Sombras Luisance Power Eyeshadows - L2061" />
-            </div>
-            <h3>Paleta de Sombras Luisance Power Eyeshadows - L2061</h3>
+            <h3>MOUSSE MICELAR ROSA MOSQUETA 150ML SOUL</h3>
             <p>R$ 25,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>        
-          <div class="produto" data-nome="Sexteto de Sombras London Blue Moon BM-7804" data-preco="10.00">
+          <div class="produto" data-nome="SÉRUM FACIAL 3 EM 1- MAX LOVE" data-preco="12,00">
             <div class="produto-img">
-              <img src="/img/Sexteto de Sombras London Blue Moon BM-7804.jpg" alt="Sexteto de Sombras London Blue Moon BM-7804" />
+              <img src="/img/SÉRUM FACIAL 3 EM 1- MAX LOVE.jpeg" alt="SÉRUM FACIAL 3 EM 1- MAX LOVE" />
             </div>
-            <h3>Sexteto de Sombras London Blue Moon BM-7804</h3>
-            <p>R$ 10,00</p>
+            <h3>SÉRUM FACIAL 3 EM 1- MAX LOVE</h3>
+            <p>R$ 12,00</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>        
+          <div class="produto" data-nome="Fixador e Diluidor Efeito Blindagem Super Poderes" data-preco="15,00">
+            <div class="produto-img">
+              <img src="/img/SÉRUM FACIAL 3 EM 1- MAX LOVE.jpeg" alt="Fixador e Diluidor Efeito Blindagem Super Poderes" />
+            </div>
+            <h3>Fixador e Diluidor Efeito Blindagem Super Poderes</h3>
+            <p>R$ 15,00</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>        
+          <div class="produto" data-nome="Primer Facial Vegano Vit C - Max Love" data-preco="12,00">
+            <div class="produto-img">
+              <img src="/img/Primer Facial Vegano Vit C - Max Love.jpeg" alt="Primer Facial Vegano Vit C - Max Love" />
+            </div>
+            <h3>Primer Facial Vegano Vit C - Max Love</h3>
+            <p>R$ 12,00</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>        
+          <div class="produto" data-nome="Blush Líquido Multifuncional" data-preco="22,99">
+            <div class="produto-img">
+              <img src="/img/Blush Líquido Multifuncional.jpeg" alt="Blush Líquido Multifuncional" />
+            </div>
+            <h3>Blush Líquido Multifuncional</h3>
+            <p>R$ 22,99</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>        
+          <div class="produto" data-nome="Iluminador Liquido, Glow Alta Fixação Maquiagem Febella" data-preco="22,99">
+            <div class="produto-img">
+              <img src="/img/Iluminador Liquido, Sombra Glow Alta Fixação Maquiagem Febella.jpeg" alt="Iluminador Liquido, Glow Alta Fixação Maquiagem Febella" />
+            </div>
+            <h3>Iluminador Liquido, Glow Alta Fixação Maquiagem Febella</h3>
+            <p>R$ 22,99</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>        
         </div>
@@ -199,6 +259,14 @@
             <p>R$ 14,99</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>
+          <div class="produto" data-nome="Lip Balm Gloss de Frutas Bisnaguinha 13ml - Belle Angel" data-preco="12,00">
+            <div class="produto-img">
+              <img src="/img/Lip Balm Gloss de Frutas Bisnaguinha 13ml - Belle Angel.jpeg" alt="Lip Balm Gloss de Frutas Bisnaguinha 13ml - Belle Angel" />
+            </div>
+            <h3>Lip Balm Gloss de Frutas Bisnaguinha 13ml - Belle Angel</h3>
+            <p>R$ 12,00</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
           <div class="produto" data-nome="Max Love – Lip Oil Bomb Brilhante" data-preco="7.99">
             <div class="produto-img">
               <img src="/img/Max Love – Lip Oil Bomb Brilhante .webp" alt="Max Love – Lip Oil Bomb Brilhante" />
@@ -207,43 +275,43 @@
             <p>R$ 7,99</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>
-          <div class="produto" data-nome="Gloss Pump Linha Gummy Mia make cor - 06" data-preco="12.00">
+          <div class="produto" data-nome="Gloss Pump Linha Gummy Mia make cor - 06" data-preco="10.00">
             <div class="produto-img">
               <img src="/img/Gloss Pump Linha Gummy Mia make cor - 06.webp" alt="Gloss Pump Linha Gummy Mia make cor - 06" />
             </div>
             <h3>Gloss Pump Linha Gummy Mia make cor - 06</h3>
-            <p>R$ 12,00</p>
+            <p>R$ 10,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>
-          <div class="produto" data-nome="gel trint - wike make" data-preco="14.00">
+          <div class="produto" data-nome="gel trint - wike make" data-preco="12.00">
             <div class="produto-img">
               <img src="/img/gel trint - wike make.jpg" alt="gel trint - wike make" />
             </div>
             <h3>gel trint - wike make</h3>
-            <p>R$ 14,00</p>
+            <p>R$ 12,00</p>
+            <button onclick="addToCart(this)">Comprar</button>
+          </div>
+          <div class="produto" data-nome="Lip Oil Vegano Candy Framboesa  Max Love" data-preco="12.00">
+            <div class="produto-img">
+              <img src="/img/Lip Oil Vegano Candy Framboesa  Max Love.jpeg" alt="Lip Oil Vegano Candy Framboesa  Max Love" />
+            </div>
+            <h3>Lip Oil Vegano Candy Framboesa  Max Love</h3>
+            <p>R$ 12,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>
         </div>
       </div>
 
       
-      <!-- Categoria Unhas -->
-      <div class="categoria-content" id="unhas">
+      <!-- Categoria acessorios -->
+      <div class="categoria-content" id="acessorios">
         <div class="grid-produtos">
-          <div class="produto" data-nome="Esmalte Gel" data-preco="24.90">
+          <div class="produto" data-nome="Faixa Laço Atoalhada para Maquiagem e Skin Care - Tiara Cabelo" data-preco="10,00">
             <div class="produto-img">
-              <img src="/img/Base Líquida HD.jpg" alt="Esmalte Gel" />
+              <img src="/img/Faixa Laço Atoalhada para Maquiagem e Skin Care - Tiara Cabelo (Cores variadas).jpeg" alt="Faixa Laço Atoalhada para Maquiagem e Skin Care - Tiara Cabelo" />
             </div>
-            <h3>Esmalte Gel</h3>
-            <p>R$ 24,90</p>
-            <button onclick="addToCart(this)">Comprar</button>
-          </div>
-          <div class="produto" data-nome="Kit Unhas" data-preco="79.90">
-            <div class="produto-img">
-              <img src="/img/Base Líquida HD.jpg" alt="Kit Unhas" />
-            </div>
-            <h3>Kit Unhas</h3>
-            <p>R$ 79,90</p>
+            <h3>Faixa Laço Atoalhada para Maquiagem e Skin Care - Tiara Cabelo</h3>
+            <p>R$ 10,00</p>
             <button onclick="addToCart(this)">Comprar</button>
           </div>
         </div>

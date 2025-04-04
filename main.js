@@ -86,10 +86,14 @@ function updateCartDisplay() {
 function addToCart(button) {
   const produto = button.closest('.produto');
   const name = produto.querySelector('h3').textContent.trim();
-  const price = parseFloat(produto.querySelector('p').textContent.replace('R$', '').trim());
+  // Obtém o texto do preço e remove o "R$"
+  let priceText = produto.querySelector('p').textContent.replace('R$', '').trim();
+  // Substitui a vírgula pelo ponto para que o parseFloat funcione corretamente
+  priceText = priceText.replace(',', '.');
+  const price = parseFloat(priceText);
 
   cart.push({ name, price });
-  saveCart(); // Salva o carrinho no localStorage
+  saveCart();
   updateCartCount();
   updateCartDisplay();
   updateCartTotal();
@@ -98,7 +102,6 @@ function addToCart(button) {
   const rect = button.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
-
   for (let i = 0; i < 20; i++) {
     setTimeout(() => {
       const randomOffset = (Math.random() - 0.5) * 60;
@@ -106,6 +109,7 @@ function addToCart(button) {
     }, i * 50);
   }
 }
+
 
 function removeFromCart(index) {
   cart.splice(index, 1);
@@ -213,3 +217,81 @@ function finalizarCompra() {
 
 // Evento para finalizar a compra
 document.querySelector('.finalizar-compra').addEventListener('click', finalizarCompra);
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  (function () {
+    var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+    if (window.ShopifyBuy) {
+      if (window.ShopifyBuy.UI) {
+        ShopifyBuyInit();
+      } else {
+        loadScript();
+      }
+    } else {
+      loadScript();
+    }
+
+    function loadScript() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = scriptURL;
+      document.head.appendChild(script);
+      script.onload = ShopifyBuyInit;
+    }
+
+    function ShopifyBuyInit() {
+      var client = ShopifyBuy.buildClient({
+        domain: '16dbfg-x0.myshopify.com',
+        storefrontAccessToken: '589f7c7cf5c62e52037c32115ca9e8e7',
+      });
+
+      ShopifyBuy.UI.onReady(client).then(function (ui) {
+        ui.createComponent('product', {
+          id: '8990827446516',
+          node: document.getElementById('product-component-1743602358390'),
+          moneyFormat: 'R%24%20%7B%7Bamount_with_comma_separator%7D%7D',
+          options: {
+            "product": {
+              "text": { "button": "Comprar agora" },
+              "styles": {
+                "button": {
+                  "background-color": "#fbd1fc",
+                  "color": "#000",
+                  ":hover": { "background-color": "#e2bce3" }
+                }
+              },
+              "googleFonts": ["Roboto"]
+            },
+            "cart": {
+              "text": { "total": "Subtotal", "button": "Finalizar" },
+              "styles": {
+                "button": {
+                  "background-color": "#fbd1fc",
+                  ":hover": { "background-color": "#e2bce3" }
+                }
+              },
+              "googleFonts": ["Roboto"]
+            },
+            "toggle": {
+              "styles": {
+                "toggle": {
+                  "background-color": "#fbd1fc",
+                  ":hover": { "background-color": "#e2bce3" }
+                }
+              },
+              "googleFonts": ["Roboto"]
+            }
+          }
+        });
+      });
+    }
+  })();
+});
